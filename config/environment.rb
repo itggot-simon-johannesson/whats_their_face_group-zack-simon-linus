@@ -21,6 +21,8 @@ configure :development do
   # Enable pretty printing of Slim-generated HTML (for debugging)
   Slim::Engine.set_options pretty: true, sort_attrs: false
 
+  puts "Configured development"
+
 end
 
 # Used during production (on Heroku), when your application is 'live'
