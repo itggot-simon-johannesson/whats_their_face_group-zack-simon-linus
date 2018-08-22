@@ -7,7 +7,7 @@ class App < Sinatra::Base
   	slim 'index'
   end
 
-  get '/guess_game/?' do
+  get '/guess_game' do
   	slim 'guess_game'
   end
 
