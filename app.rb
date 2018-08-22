@@ -7,7 +7,6 @@ class App < Sinatra::Base
     slim :index
   end
 
-=begin
   get '/guess_game/:class' do
     
     p session[:person_id] = Person.all(:class => params[:class].upcase)[]
@@ -29,5 +28,4 @@ class App < Sinatra::Base
     puts the_person_it_is.name
     slim :answer
   end
-=end
 end
