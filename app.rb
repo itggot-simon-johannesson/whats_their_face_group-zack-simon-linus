@@ -1,7 +1,7 @@
 class App < Sinatra::Base
 
   enable :sessions
-  require_relative './main.css'
+  require_relative './public/main.css'
   get '/' do
   	"Hello, Sinatra!"
   end
