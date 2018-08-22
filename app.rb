@@ -7,8 +7,13 @@ class App < Sinatra::Base
   end
 
   get '/guess_game/:class' do
-    session[:person_id] = Person.first(:offset => rand(Person.count), :class = params[:class]).id
-    puts "random person is #{session[:person_id]}" 
+    
+    p session[:person_id] = Person.all(:class => params[:class].upcase)[]
+  
+    #session[:person_id] = Person.first(:offset => rand(Person.count), :class = params[:class]).id
+
+
+    "random person is #{session[:person_id]}"
     session[:alternatives] = [0, 2, 3, 4]
   	slim :guess_game
   end
