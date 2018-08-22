@@ -46,3 +46,22 @@ body {
     width: 80%;
     height: 500px;
 }
+
+.header {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    padding-top: 50px;
+}
+
+.selection_box {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    height: auto;
+    margin-top: 80px;
+}
+
+.select_text {
+    
+}
