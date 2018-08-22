@@ -10,18 +10,23 @@ Bundler.require
 # Rake tasks for database management
 namespace :db do
 
-  # Task for populating the database from db/seed.rb
-  # rake db:seed
-  task :seed do
+  def get_person(image_path)
+    the_match = /.+\/(?<class_name>.+?) (?<person_name>.+?)\./.match(image_path)
+    the_match
+  end
+
+  task :people do
     # Load all models etc
     require_relative 'config/environment'
 
     # Update the database schema
     DataMapper.auto_migrate!
 
-    # Add seed data to database
-    require './db/seed'
-    Seeder.seed!
+    Dir["./public/images/*.jpg"].each do |image_path|
+      person_match = get_person(image_path)
+      person = Person.new(:name => person_match["person_name"], :class => person_match["class_name"], :image_path => image_path)
+      person.save
+    end
   end
 
 end
