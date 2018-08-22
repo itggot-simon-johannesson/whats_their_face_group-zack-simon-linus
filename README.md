@@ -1,1 +1,1 @@
-This is a program 
+Detta är ett program för lärare med nya elever. Läraren ska med minispel kunna lära sig elevernas namn. 
