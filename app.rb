@@ -7,9 +7,16 @@ class App < Sinatra::Base
   end
 
   get '/guess_game' do
-    @person = Person.first(:offset => rand(Person.count))
-    puts @person.name
+    session[:person_id] = rand(Person.count)
+    puts "random person is #{session[:person_id]}" 
   	slim :guess_game
+  end
+
+  get '/answer/:guess_id' do
+    the_person_we_guessed = Person.get(params[:guess_id])
+    the_person_it_is = Person.get(session[:person_id])
+    puts the_person_we_guessed.name
+    puts the_person_it_is.name
   end
 
 end
