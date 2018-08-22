@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 
 # Tell heroku and bundler which version of ruby to use
-ruby '2.2.3'
+ruby '2.5.1'
 
 # Gems used by all environments (development, production & test)
 gem 'sinatra'
@@ -20,14 +20,6 @@ group :development do
   gem 'rerun'
   gem 'thin'
   
-end
-
-# Used during production (on Heroku), when your application is 'live'
-group :production do
-
-  # Use Postgresql
-  gem 'dm-postgres-adapter', group: :production
-
 end
 
 # Used when running tests (rake test:[acceptance|models|routes])
