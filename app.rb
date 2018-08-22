@@ -3,11 +3,11 @@ class App < Sinatra::Base
   enable :sessions
 
   get '/' do
-  	slim 'index'
+  	slim :index
   end
 
   get '/guess_game' do
-  	slim 'guess_game'
+  	slim :guess_game
   end
 
 end
