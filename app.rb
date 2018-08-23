@@ -28,7 +28,7 @@ class App < Sinatra::Base
 
   get '/answer/:guess_id' do
     redirect '/' unless session[:person_id]
-    
+
     @the_person_guessed = Person.get(params[:guess_id])
     @the_person_it_is = Person.get(session[:person_id])
 

@@ -67,6 +67,11 @@ body {
     padding-top: 50px;
 }
 
+.game_selection {
+    margin: 0 auto;
+    margin-bottom: 25px;
+}
+
 .selection_box {
     display: flex;
     flex-direction: column;

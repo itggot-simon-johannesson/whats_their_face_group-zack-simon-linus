@@ -3,6 +3,8 @@ html
         meta charset="utf-8"
         link rel="stylesheet" type="text/css" href="/css/main.css"
         meta name="viewport" content="width=device-width,initial-scale=1"
+        script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"
     body
-    div class="container"
+    div id="app" class="container"
         == yield
+    script src="/js/script.js"
