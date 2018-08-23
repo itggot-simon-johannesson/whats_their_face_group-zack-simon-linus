@@ -9,7 +9,7 @@ class App < Sinatra::Base
 
   get '/guess_game/:class' do
     @minigame = params[:minigame]
-    #p session[:person_id] = Person.all(:class => params[:class].upcase)[]
+    redirect '/' unless @minigame
 
     session[:guessed_correct] = []
 
@@ -61,7 +61,7 @@ class App < Sinatra::Base
   end
 
   get '/answer/:guess_id' do
-    redirect '/' unless session[:person_id]
+    redirect '/' unless session[:person_id] or @minigame
 
     @minigame = params[:minigame]
     @the_person_guessed = Person.get(params[:guess_id])
