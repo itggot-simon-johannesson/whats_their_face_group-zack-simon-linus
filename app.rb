@@ -8,7 +8,7 @@ class App < Sinatra::Base
   end
 
   get '/guess_game/:class' do
-    
+    @minigame = params[:minigame]
     #p session[:person_id] = Person.all(:class => params[:class].upcase)[]
 
     person_query_result = repository(:default).adapter.select('SELECT id FROM people WHERE class LIKE ? ORDER BY random() LIMIT 1;', params[:class])
@@ -22,13 +22,14 @@ class App < Sinatra::Base
 
     puts "random person is #{session[:person_id]}"
 
-    session[:alternatives] = [0, 2, 3, 4]
+    session[:alternatives] = [1, 2, 3, session[:person_id]]
   	slim :guess_game
   end
 
   get '/answer/:guess_id' do
     redirect '/' unless session[:person_id]
 
+    @minigame = params[:minigame]
     @the_person_guessed = Person.get(params[:guess_id])
     @the_person_it_is = Person.get(session[:person_id])
 
