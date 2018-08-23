@@ -3,12 +3,19 @@ class App < Sinatra::Base
   enable :sessions
 
   get '/' do
+    puts Person.all
     slim :index
   end
 
   get '/guess_game/:class' do
-    session[:person_id] = rand(Person.count)
-    puts "random person is #{session[:person_id]}"
+    
+    p session[:person_id] = Person.all(:class => params[:class].upcase)[]
+  
+    #session[:person_id] = Person.first(:offset => rand(Person.count), :class = params[:class]).id
+
+
+    "random person is #{session[:person_id]}"
+
     session[:alternatives] = [0, 2, 3, 4]
   	slim :guess_game
   end
@@ -19,5 +26,4 @@ class App < Sinatra::Base
     @the_person_it_is = Person.get(session[:person_id])
     slim :answer
   end
-
 end

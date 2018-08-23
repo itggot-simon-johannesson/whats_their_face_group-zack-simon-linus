@@ -59,3 +59,22 @@ body {
     font-size: 2rem;
     font-weight: bold;
 }
+
+.header {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    padding-top: 50px;
+}
+
+.selection_box {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    height: auto;
+    margin-top: 80px;
+}
+
+.select_text {
+    
+}
