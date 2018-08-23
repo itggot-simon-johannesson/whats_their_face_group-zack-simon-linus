@@ -13,6 +13,10 @@ body {
     background: green !important;
 }
 
+.container {
+    width: 100%;
+}
+
 .menu_container {
     display: flex;
     flex-direction: column;
