@@ -1,4 +1,6 @@
-.game_container :class="{ green : #{@message.include?('correct')} }"
+== partial :'menu'
+
+.game_container
     p.red_text #{@message}
     p
         | You guessed 

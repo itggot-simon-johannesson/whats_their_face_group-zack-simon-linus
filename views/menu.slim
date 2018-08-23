@@ -1,19 +1,21 @@
+div id="app" class="menu_container"
+    .game
+        div class="selection_box"
+            h2 Game
+            div class="game_selection"
+                div
+                    input#one type="radio" v-model="picked_minigame" value="whats_their_name"
+                    label for="one" What's their name?
+                div
+                    input#two type="radio" v-model="picked_minigame" value="whats_their_face"
+                    label for="two" What's their face?
+                div
+                    input#three type="radio" v-model="picked_minigame" value="memory_game"
+                    label for="three" Memory game
 
-            div class="selection_box"
-                div class="game_selection"
-                    div
-                        input#one type="radio" v-model="picked_minigame" value="whats_their_name"
-                        label for="one" What's their name?
-                    div
-                        input#two type="radio" v-model="picked_minigame" value="whats_their_face"
-                        label for="two" What's their face?
-                    div
-                        input#three type="radio" v-model="picked_minigame" value="memory_game"
-                        label for="three" Memory game
-
-
-            div class="select_text"
-                h3 What class do you want to practice?
+    .class
+        div class="select_text"
+            h2 Class
             div class="select_class"
                 - @classes.each do |class_name|
                     a :href="`/guess_game/#{class_name}?minigame=${picked_minigame}`" = class_name
