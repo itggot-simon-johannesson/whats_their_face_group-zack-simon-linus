@@ -24,7 +24,9 @@ namespace :db do
 
     Dir["./public/images/*.jpg"].each do |image_path|
       person_match = get_person(image_path)
-      person = Person.new(:name => person_match["person_name"], :class => person_match["class_name"], :image_path => image_path)
+      person = Person.new(:name => person_match["person_name"],
+                          :class => person_match["class_name"],
+                          :image_path => image_path.gsub('./public', '..'))
       person.save
     end
   end
