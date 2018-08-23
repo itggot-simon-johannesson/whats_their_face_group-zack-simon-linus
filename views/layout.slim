@@ -5,6 +5,10 @@ html
         link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"
         meta name="viewport" content="width=device-width,initial-scale=1"
         script src="/js/vue.js"
-    body :class="{ green : #{@message.include?('correct')} }"
-        == yield
+    - if @is_correct
+        body.green
+            == yield
+    - else
+        body
+            == yield
     script src="/js/script.js"

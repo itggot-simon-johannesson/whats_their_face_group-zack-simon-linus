@@ -34,7 +34,9 @@ class App < Sinatra::Base
     @the_person_guessed = Person.get(params[:guess_id])
     @the_person_it_is = Person.get(session[:person_id])
 
-    if @the_person_guessed.id == @the_person_it_is.id
+    @is_correct = @the_person_guessed.id == @the_person_it_is.id
+
+    if @is_correct
       @message = "Your guess is correct :D"
     else
       @message = "Your guess is wrong !!! >:("
