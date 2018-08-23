@@ -17,7 +17,7 @@ Vue.component(`card-component`, {
     },
     methods: {
         flipCard() {
-            this.is_card_shown 
+            this.is_card_shown = !this.is_card_shown
         }
     }
 });
