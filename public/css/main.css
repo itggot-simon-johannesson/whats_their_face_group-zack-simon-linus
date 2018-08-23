@@ -96,3 +96,7 @@ body {
     background: white;
     color: black;
 }
+
+.person_name {
+    text-transform: capitalize;
+}

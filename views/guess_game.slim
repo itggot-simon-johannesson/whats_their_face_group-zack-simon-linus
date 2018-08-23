@@ -5,10 +5,10 @@ div class="game_container"
         - if @minigame == "whats_their_name"            
             img.person_image src="#{the_person_it_is.image_path}"
         - elsif @minigame == "whats_their_face"
-            = the_person_it_is.name
+            p.person_name = the_person_it_is.name
     div class="select_class"
         - all_persons.each do |person|
-            a href="/answer/#{person.id}?minigame=#{@minigame}"
+            a.person_name href="/answer/#{person.id}?minigame=#{@minigame}"
                 - if @minigame == "whats_their_name"
                     = person.name
                 - elsif @minigame == "whats_their_face"
