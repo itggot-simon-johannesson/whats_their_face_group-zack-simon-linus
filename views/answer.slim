@@ -1,6 +1,10 @@
 .game_container
     p.red_text #{@message}
-    p You guessed #{@the_person_guessed.name}
+    p
+        | You guessed 
+        span.person_name #{@the_person_guessed.name}
     img.person_image src="#{@the_person_it_is.image_path}"
-    p It is #{@the_person_it_is.name}
-    a href="/guess_game/#{@the_person_it_is.class}" Next person
+    p
+        | It is 
+        span.person_name #{@the_person_it_is.name}
+    a href="/guess_game/#{@the_person_it_is.class}?minigame=#{@minigame}" Next person
