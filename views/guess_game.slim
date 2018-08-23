@@ -1,3 +1,5 @@
+== partial :'menu'
+
 - all_persons = Person.all(:id => session[:alternatives])
 - the_person_it_is = all_persons.select { |person| person.id == session[:person_id]}.first
 div class="game_container"

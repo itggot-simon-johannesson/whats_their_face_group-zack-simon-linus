@@ -2,8 +2,11 @@ class App < Sinatra::Base
 
   enable :sessions
 
-  get '/' do
+  before do
     @classes = repository(:default).adapter.select('SELECT DISTINCT class FROM people')
+  end
+
+  get '/' do
     slim :index
   end
 
