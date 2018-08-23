@@ -39,4 +39,13 @@ class App < Sinatra::Base
 
     slim :answer
   end
+
+  def partial(page, options={}, &block)        
+      if block_given?
+          slim page, options.merge!(:layout => false), @locals, &block
+      else
+          slim page, options.merge!(:layout => false), @locals
+      end
+  end
+  
 end
