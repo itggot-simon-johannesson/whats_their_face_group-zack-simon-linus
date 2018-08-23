@@ -1,9 +1,10 @@
 * {
     margin: 0px;
+    font-family: 'Lobster';
 }
 
 body {
-    background-color: lightsalmon;
+    background-color: #F3A712;
 }
 
 .container {
