@@ -1,5 +1,6 @@
 # Use bundler to load gems
 require 'bundler'
+require 'json'
 
 # Load gems from Gemfile
 Bundler.require

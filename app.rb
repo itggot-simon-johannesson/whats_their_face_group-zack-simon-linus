@@ -47,5 +47,5 @@ class App < Sinatra::Base
           slim page, options.merge!(:layout => false), @locals
       end
   end
-  
+
 end

@@ -1,6 +1,1 @@
-- @people.each do |person|
-    p = person.id
-    p = person.name
-    p = person.class
-    img.person_image src="#{person.image_path}"
-    hr
+chessboard-component[:cards="[#{@people.flat_map{|person| [person.to_h.merge({is_image: false}).to_json, person.to_h.merge({is_image: true}).to_json]}.join(',')}]"]

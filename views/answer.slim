@@ -1,4 +1,4 @@
-.game_container
+.game_container :class="{ green : #{@message.include?('correct')} }"
     p.red_text #{@message}
     p
         | You guessed 

@@ -137,6 +137,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   data_mapper
+  dm-serializer
   dm-sqlite-adapter
   racksh
   rerun
