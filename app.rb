@@ -10,6 +10,7 @@ class App < Sinatra::Base
   get '/guess_game/:class' do
     @minigame = params[:minigame]
     redirect '/' unless @minigame
+    redirect "/memory_game/#{params[:class]}" if @minigame == "memory_game"
 
     session[:guessed_correct] = []
 
@@ -58,6 +59,11 @@ class App < Sinatra::Base
 
     session[:alternatives] = answers
   	slim :guess_game
+  end
+
+  get '/memory_game/:class' do
+    @people = repository(:default).adapter.select('SELECT id, name, class, image_path FROM people WHERE class LIKE ? ORDER BY random() LIMIT 10;', params[:class])
+    slim :memory_game
   end
 
   get '/answer/:guess_id' do
