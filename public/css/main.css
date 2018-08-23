@@ -69,12 +69,25 @@ body {
 
 .selection_box {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin: auto;
     height: auto;
     margin-top: 80px;
 }
 
-.select_text {
-    
+.select_class {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    height: auto;
+    justify-content: space-between;
+}
+
+.select_class > a {
+    text-decoration: none;
+    border-radius: 999px;
+    padding: 1rem 2rem;
+    background: white;
+    color: black;
 }

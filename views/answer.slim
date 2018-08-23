@@ -1,10 +1,5 @@
 .game_container
-
-    - if @the_person_guessed.id == @the_person_it_is.id
-        p.red_text Your guess is correct :D
-    - else
-        p.red_text Your guess is wrong !!! >:(
-
+    p.red_text #{@message}
     p You guessed #{@the_person_guessed.name}
     img.person_image src="#{@the_person_it_is.image_path}"
     p It is #{@the_person_it_is.name}

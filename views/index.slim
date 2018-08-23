@@ -5,4 +5,5 @@ div class="selection_box"
     div class="select_text"
         h3 What class do you want to practice?
     div class="select_class"
-        
+        - @classes.each do |class_name|
+            a href="/guess_game/#{class_name}" = class_name

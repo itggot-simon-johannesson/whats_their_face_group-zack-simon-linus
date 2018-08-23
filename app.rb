@@ -3,7 +3,7 @@ class App < Sinatra::Base
   enable :sessions
 
   get '/' do
-    puts Person.all
+    @classes = repository(:default).adapter.select('SELECT DISTINCT class FROM people')
     slim :index
   end
 
@@ -28,8 +28,16 @@ class App < Sinatra::Base
 
   get '/answer/:guess_id' do
     redirect '/' unless session[:person_id]
+    
     @the_person_guessed = Person.get(params[:guess_id])
     @the_person_it_is = Person.get(session[:person_id])
+
+    if @the_person_guessed.id == @the_person_it_is.id
+      @message = "Your guess is correct :D"
+    else
+      @message = "Your guess is wrong !!! >:("
+    end
+
     slim :answer
   end
 end
