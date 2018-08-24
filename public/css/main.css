@@ -7,10 +7,19 @@ body {
     background-color: #F3A712;
     display: flex;
     flex-direction: row;
+    color: #29335C !important; 
+}
+
+a {
+    color: #29335C;
 }
 
 .green {
     background: #A8C686 !important;
+}
+
+.red {
+    background-color: #E4572E;
 }
 
 .container {
@@ -41,6 +50,7 @@ body {
 
 .card-outline {
     outline: 5px solid greenyellow;
+    box-sizing: border-box;
 }
 
 .chessboard-component {
@@ -72,17 +82,26 @@ body {
 
 .game_container {
     display: flex;
-    flex-direction: column;
     width: 50%;
     height: auto;
     flex-direction: row;
+    margin-left: 10%;
+}
+
+.game_container_2 {
+    display: flex;
+    width: 50%;
+    height: auto;
+    flex-direction: column;
+    margin-left: 10%;
+    text-align: center;
 }
 
 .pic_container {
     display: flex;
     flex-direction: column;
     margin: auto;
-    width: 80%;
+    width: 50%;
     height: auto;
     margin-top: 20%;
 }
@@ -104,15 +123,14 @@ body {
 }
 
 .person_image {
-    width: 144px;
+    width: 70%;
     height: auto;
     margin: 0 auto;
 }
 
 .red_text {
-    color: red;
     margin: 1rem auto;
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: bold;
 }
 
@@ -159,7 +177,7 @@ body {
     flex-direction: column;
     margin-top: 10px;
     height: auto;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .select_class > a {
@@ -167,8 +185,40 @@ body {
     border-radius: 999px;
     padding: 1rem 2rem;
     background: white;
-    color: black;
+    color: #29335C;
     margin: 3px;
+}
+
+.select_name {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20%;
+    height: auto;
+    justify-content: flex-start;
+}
+
+.select_name > a {
+    text-decoration: none;
+    border-radius: 999px;
+    padding: 1rem 2rem;
+    background: white;
+    color: #29335C;
+    margin: 3px;
+}
+
+.select_pic {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20%;
+    height: auto;
+    justify-content: flex-start;
+}
+
+.select_pic > a {
+    text-decoration: none;
+    border-radius: 999px;
+    padding: 1%;
 }
 
 .person_name {

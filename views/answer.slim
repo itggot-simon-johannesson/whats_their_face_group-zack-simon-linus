@@ -1,12 +1,12 @@
 == partial :'menu'
 
-.game_container
+.game_container_2
     p.red_text #{@message}
     p
         | You guessed 
         span.person_name #{@the_person_guessed.name}
     img.person_image src="#{@the_person_it_is.image_path}"
     p
-        | It is 
+        | This is 
         span.person_name #{@the_person_it_is.name}
     a href="/guess_game/#{@the_person_it_is.class}?minigame=#{@minigame}" Next person
