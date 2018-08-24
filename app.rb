@@ -27,6 +27,8 @@ class App < Sinatra::Base
 
   get '/memory_game/:class' do
     @people = repository(:default).adapter.select('SELECT id, name, class, image_path FROM people WHERE class LIKE ? ORDER BY random() LIMIT 8;', params[:class])
+    func = ->(person, isset){person.to_h.merge({is_image: isset}).to_json}
+    @cards_json = "[#{@people.flat_map{|person| [func.call(person, true), func.call(person, false)]}.shuffle().join(',')}]"
     slim :memory_game
   end
 

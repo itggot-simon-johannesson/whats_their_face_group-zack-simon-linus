@@ -1,2 +1,2 @@
-- func = ->(person, isset){person.to_h.merge({is_image: isset}).to_json}
-chessboard-component[:cards="[#{@people.flat_map{|person| [func.call(person, true), func.call(person, false)]}.shuffle().join(',')}]"]
+== partial :'menu'
+chessboard-component[:cards="#{@cards_json}"]
