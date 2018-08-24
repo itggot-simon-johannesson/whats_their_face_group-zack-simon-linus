@@ -37,6 +37,10 @@ body {
     justify-content: flex-start;
 }
 
+.card-outline {
+    outline: 5px solid greenyellow;
+}
+
 .chessboard-component {
     width:50vw;
 	margin:0 auto;
