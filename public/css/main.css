@@ -1,6 +1,6 @@
 * {
     margin: 0px;
-    font-family: 'Lobster';
+    font-family: 'Roboto';
 }
 
 body {
@@ -43,16 +43,27 @@ a {
 
 button {
     font-size: 2rem;
+    color: #29335C;
 }
 
 .transparent {
     color: transparent;
     transition: color 0.5s;
     text-transform: capitalize;
+    border-radius: 999px;
+    padding: 1rem 2rem;
+    background: transparent;
+    margin: 3px;
+    font-size: 4rem;
 }
 
 .opaque {
-    color: black;
+    color: rgb(162, 228, 86);
+    border-radius: 999px;
+    padding: 1rem 2rem;
+    background: white;
+    color: #29335C;
+    margin: 3px;
 }
 
 .menu_container {
@@ -168,6 +179,8 @@ button {
 .head_text {
     margin-top: 50px;
     margin-left: 50px;
+    font-family: 'Lobster';
+    font-size: 5rem
 }
 
 .people_image {

@@ -30,7 +30,7 @@ Vue.component(`card-component`, {
     template:
         `
         <div class="card-component" @click="flipCard" :class="{'card-outline': is_card_matched}">
-            <div v-if="!card.is_image && is_card_shown" class="card_front person_name">{{card.name}}</div><img v-if="card.is_image && is_card_shown" :src="card.image_path" class="card_front"><img src="https://via.placeholder.com/128x128" class="card_back" v-if="!is_card_shown">
+            <div v-if="!card.is_image && is_card_shown" class="card_front person_name">{{card.name}}</div><img v-if="card.is_image && is_card_shown" :src="card.image_path" class="card_front"><img src="/images/question_mark.png" class="card_back" v-if="!is_card_shown">
         </div>
         `
 });
@@ -104,7 +104,7 @@ Vue.component(`slideshow-component`, {
         <div class="slideshow-component">
             <img @mouseover="do_show_name = true" @mouseleave="do_show_name = false" :src="people[person_index].image_path">
             <h1 :class="{transparent: true, opaque: do_show_name}">{{people[person_index].name}}</h1>
-            <button @click="nextPerson">Next person</button>
+            <button @click="nextPerson">Next!</button>
         </div>
         `
 });
