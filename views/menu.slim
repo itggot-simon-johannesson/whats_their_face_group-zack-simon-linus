@@ -4,6 +4,9 @@ div id="app" class="menu_container"
             h2 Game
             div class="game_selection"
                 div
+                    input#zero type="radio" v-model="picked_minigame" value="learn_their_name"
+                    label for="zero" Learn their name!
+                div
                     input#one type="radio" v-model="picked_minigame" value="whats_their_name"
                     label for="one" What's their name?
                 div
@@ -11,7 +14,7 @@ div id="app" class="menu_container"
                     label for="two" What's their face?
                 div
                     input#three type="radio" v-model="picked_minigame" value="memory_game"
-                    label for="three" Memory game
+                    label for="three" Memory game!
 
     .class
         div class="select_text"
