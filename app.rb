@@ -16,14 +16,17 @@ class App < Sinatra::Base
     redirect '/' unless @minigame
     redirect "/memory_game/#{params[:class]}" if @minigame == "memory_game"
 
-    session[:alternatives] = repository(:default).adapter.select('SELECT id FROM people WHERE class LIKE ? ORDER BY random() LIMIT 4;', params[:class])
-    session[:person_id] = session[:alternatives].sample
-    
+    @all_people = repository(:default).adapter.select('SELECT id, name, class, image_path FROM people WHERE class LIKE ? ORDER BY random() LIMIT 4;', params[:class])
+    @the_person_it_is = @all_people.sample
+
+    session[:alternatives] = @all_people.map{|person| person.id}
+    session[:person_id] = @the_person_it_is.id
+
     slim :guess_game
   end
 
   get '/memory_game/:class' do
-    @people = repository(:default).adapter.select('SELECT id, name, class, image_path FROM people WHERE class LIKE ? ORDER BY random() LIMIT 10;', params[:class])
+    @people = repository(:default).adapter.select('SELECT id, name, class, image_path FROM people WHERE class LIKE ? ORDER BY random() LIMIT 8;', params[:class])
     slim :memory_game
   end
 

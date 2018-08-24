@@ -1,15 +1,13 @@
 == partial :'menu'
 
-- all_persons = Person.all(:id => session[:alternatives])
-- the_person_it_is = all_persons.select { |person| person.id == session[:person_id]}.first
 div class="game_container"
     div class="pic_container"
         - if @minigame == "whats_their_name"            
-            img.person_image src="#{the_person_it_is.image_path}"
+            img.person_image src="#{@the_person_it_is.image_path}"
         - elsif @minigame == "whats_their_face"
-            p.person_name = the_person_it_is.name
+            p.person_name = @the_person_it_is.name
     div class="select_class"
-        - all_persons.each do |person|
+        - @all_people.each do |person|
             a.person_name href="/answer/#{person.id}?minigame=#{@minigame}"
                 - if @minigame == "whats_their_name"
                     = person.name

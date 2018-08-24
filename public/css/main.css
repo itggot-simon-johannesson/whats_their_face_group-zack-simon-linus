@@ -13,6 +13,10 @@ body {
     background: #A8C686 !important;
 }
 
+.container {
+    width: 100%;
+}
+
 .menu_container {
     display: flex;
     flex-direction: column;
@@ -31,6 +35,10 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+}
+
+.card-outline {
+    outline: 5px solid greenyellow;
 }
 
 .chessboard-component {
