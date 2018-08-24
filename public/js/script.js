@@ -79,13 +79,48 @@ Vue.component(`chessboard-component`, {
             <button v-if="show_replay_button" onclick="window.location.reload(true)">Replay memory</button>
         </div>
         `
-})
+});
+
+Vue.component(`slideshow-component`, {
+    props: {
+        people: {
+            type: Array
+        }
+    },
+    data() {
+        return {
+            person_index: 0,
+            do_show_name: false
+        }
+    },
+    methods: {
+        nextPerson() {
+            this.person_index += 1;
+            if (this.person_index >= this.people.length) this.person_index = 0;
+        }
+    },
+    template:
+        `
+        <div class="slideshow-component">
+            <img @mouseover="do_show_name = true" @mouseleave="do_show_name = false" :src="people[person_index].image_path">
+            <h1 :class="{transparent: true, opaque: do_show_name}">{{people[person_index].name}}</h1>
+            <button @click="nextPerson">Next person</button>
+        </div>
+        `
+});
 
 Vue.prototype.$eventHub = new Vue(); // Global event bus
 
 var app = new Vue({
     el: '#app',
     data: {
-        picked_minigame: "whats_their_name"
+        picked_minigame: "learn_their_name"
+    },
+    created() {
+        let parsedUrl = new URL(window.location.href);
+        let minigame = parsedUrl.searchParams.get('minigame');
+        if (minigame) {
+            this.picked_minigame = minigame;
+        }
     }
 })

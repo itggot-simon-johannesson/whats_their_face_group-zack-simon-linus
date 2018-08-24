@@ -11,10 +11,10 @@ class App < Sinatra::Base
   end
 
   get '/guess_game/:class' do
-    
     @minigame = params[:minigame]
     redirect '/' unless @minigame
-    redirect "/memory_game/#{params[:class]}" if @minigame == "memory_game"
+    redirect "/memory_game/#{params[:class]}?minigame=memory_game" if @minigame == "memory_game"
+    redirect "/learn_game/#{params[:class]}?minigame=learn_their_name" if @minigame == "learn_their_name"
 
     @all_people = repository(:default).adapter.select('SELECT id, name, class, image_path FROM people WHERE class LIKE ? ORDER BY random() LIMIT 4;', params[:class])
     @the_person_it_is = @all_people.sample
@@ -23,6 +23,12 @@ class App < Sinatra::Base
     session[:person_id] = @the_person_it_is.id
 
     slim :guess_game
+  end
+
+  get '/learn_game/:class' do
+    @people = repository(:default).adapter.select('SELECT id, name, class, image_path FROM people WHERE class LIKE ?;', params[:class])
+    @people_json = "[#{@people.map{|person| person.to_h.to_json}.join(',')}]"
+    slim :learn_game
   end
 
   get '/memory_game/:class' do
