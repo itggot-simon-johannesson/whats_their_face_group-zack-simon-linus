@@ -15,6 +15,7 @@ class App < Sinatra::Base
     redirect '/' unless @minigame
     redirect "/memory_game/#{params[:class]}?minigame=memory_game" if @minigame == "memory_game"
     redirect "/learn_game/#{params[:class]}?minigame=learn_their_name" if @minigame == "learn_their_name"
+    redirect "/hangman_game/#{params[:class]}?minigame=hangman_game" if @minigame == "hangman_game"
 
     @all_people = repository(:default).adapter.select('SELECT id, name, class, image_path FROM people WHERE class LIKE ? ORDER BY random() LIMIT 4;', params[:class])
     @the_person_it_is = @all_people.sample
@@ -36,6 +37,14 @@ class App < Sinatra::Base
     func = ->(person, isset){person.to_h.merge({is_image: isset}).to_json}
     @cards_json = "[#{@people.flat_map{|person| [func.call(person, true), func.call(person, false)]}.shuffle().join(',')}]"
     slim :memory_game
+  end
+
+  get '/hangman_game/:class' do
+    @people = repository(:default).adapter.select('SELECT id, name, class, image_path FROM people WHERE class LIKE ? ORDER BY random();', params[:class])
+    @all_letters = @people.flat_map{|person| person.name.upcase.split(" ")[1].gsub(/[A-Z]/,'').split("")}.uniq
+    puts @all_letters.inspect
+    @person_json = @people.first.to_h.to_json
+    slim :hangman
   end
 
   get '/answer/:guess_id' do
