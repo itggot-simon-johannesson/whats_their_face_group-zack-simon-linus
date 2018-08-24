@@ -48,10 +48,10 @@ class App < Sinatra::Base
     @is_correct = @the_person_guessed.id == @the_person_it_is.id
 
     if @is_correct
-      @message = "Your guess is correct"
+      @message = "Your guess is correct!"
     else
       @not_correct = true
-      @message = "Your guess is wrong"
+      @message = "Your guess is wrong!"
     end
 
     slim :answer
