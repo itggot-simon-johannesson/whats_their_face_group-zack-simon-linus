@@ -1,1 +1,3 @@
-hangman-component[:person="#{@person_json}"]
+== partial :'menu'
+hangman-component[:person="#{@person_json}"
+                  :all_letters="#{@all_letters.to_json}"]

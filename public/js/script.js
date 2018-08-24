@@ -25,6 +25,9 @@ Vue.component('hangman-component', {
     props: {
         person: {
             type: Object
+        },
+        all_letters: {
+            type: Array
         }
     },
     data() {
@@ -37,6 +40,7 @@ Vue.component('hangman-component', {
             word_divs: [],
             guesses: 0,
             game_over: false,
+            first_name: "",
             canvas: "",
             ctx: ""
         }
@@ -111,11 +115,10 @@ Vue.component('hangman-component', {
 				// game over
 				ctx.font = "24px Roboto, sans-serif";
 				ctx.fillText("Game Over", this.canvas.width * 0.4 - 30, this.canvas.height * 0.9);
-				this.gameOver = true;
-				this.lose = true;
+				this.game_over = true;
 				// fill in the word with the correct answer
-				for (var i = 0; i < this.person.name.length; i++) {
-					Vue.set(this.word_divs, i, this.person.name[i]);
+				for (var i = 0; i < this.first_name.length; i++) {
+					Vue.set(this.word_divs, i, this.first_name[i]);
 				}
 			}
 			this.guesses++
@@ -128,17 +131,25 @@ Vue.component('hangman-component', {
         this.ctx = this.canvas.getContext("2d");
         this.ctx.lineWidth = 2;
         this.drawGallows(this.ctx);
-        for (let i = 0; i < this.person.name.length; i++) this.word_divs.push("");
+        this.first_name = this.person.name.toUpperCase().split(" ")[1];
+
+        console.log(this.all_letters);
+
+        if (this.all_letters.length > 0) this.letters.push(this.all_letters);
+
+        for (let i = 0; i < this.first_name.length; i++) this.word_divs.push("");
     },
     created() {
         this.$eventHub.$on('hangman-check', (letter) => {
+            if (this.game_over) return;
+
             let guess_correct = false;
 
             // check if the letter is in the word, if so, fill it in
-            console.log(this.person.name);
-            for (let i = 0; i < this.person.name.length; i++) {
+            console.log(this.first_name);
+            for (let i = 0; i < this.first_name.length; i++) {
                 console.log(letter);
-                if (letter == this.person.name.toUpperCase()[i]) {
+                if (letter == this.first_name[i]) {
                     console.log("correct");
                     Vue.set(this.word_divs, i, letter);
                     guess_correct = true;
@@ -159,8 +170,11 @@ Vue.component('hangman-component', {
     template:
         `
         <div class="hangman-component">
-            <div class="hangman-board">
-                <canvas class="hangman-canvas"></canvas>
+            <div class="side-by-side">
+                <img :src="person.image_path"></img>
+                <div class="hangman-board">
+                    <canvas class="hangman-canvas"></canvas>
+                </div>
             </div>
             <div class="hangman-word">
                 <div class="word-blankletter" v-for="letter in word_divs">{{letter}}</div>
@@ -207,7 +221,7 @@ Vue.component(`card-component`, {
     template:
         `
         <div class="card-component" @click="flipCard" :class="{'card-outline': is_card_matched}">
-            <div v-if="!card.is_image && is_card_shown" class="card_front person_name">{{card.name}}</div><img v-if="card.is_image && is_card_shown" :src="card.image_path" class="card_front"><img src="https://via.placeholder.com/128x128" class="card_back" v-if="!is_card_shown">
+            <div v-if="!card.is_image && is_card_shown" class="card_front person_name">{{card.name}}</div><img v-if="card.is_image && is_card_shown" :src="card.image_path" class="card_front"><img src="/images/question_mark.png" class="card_back" v-if="!is_card_shown">
         </div>
         `
 });
@@ -281,7 +295,7 @@ Vue.component(`slideshow-component`, {
         <div class="slideshow-component">
             <img @mouseover="do_show_name = true" @mouseleave="do_show_name = false" :src="people[person_index].image_path">
             <h1 :class="{transparent: true, opaque: do_show_name}">{{people[person_index].name}}</h1>
-            <button @click="nextPerson">Next person</button>
+            <button @click="nextPerson">Next!</button>
         </div>
         `
 });
