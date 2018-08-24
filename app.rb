@@ -38,6 +38,11 @@ class App < Sinatra::Base
     slim :memory_game
   end
 
+  get '/hangman_game/:class' do
+    @person_json = repository(:default).adapter.select('SELECT id, name, class, image_path FROM people WHERE class LIKE ? ORDER BY random() LIMIT 1;', params[:class]).first.to_h.to_json
+    slim :hangman
+  end
+
   get '/answer/:guess_id' do
     redirect '/' unless session[:person_id] or @minigame
 

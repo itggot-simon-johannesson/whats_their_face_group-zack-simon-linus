@@ -13,6 +13,46 @@ body {
     background: #A8C686 !important;
 }
 
+.hangman-board {
+    background: white;
+}
+
+/* C. blank letters */
+.hangman-word {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0 18px 0;
+}
+
+.word-blankletter {
+    align-items: flex-end;
+    background-color: #ff9800;
+    box-shadow: 0 2px 5px #D0D0D0;
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    margin: 0 2px 2px 2px;
+    width: 20px;
+}
+
+/* D. keyboard */
+.hangman-keyboard {
+    align-items: center;
+    display: flex;
+    flex: 2 1 auto;
+    flex-direction: column;
+}
+
+.keyboard-row {
+    display: flex;
+}
+
+.keyboard-row-letter {
+    height: 40px;
+    width: 28px;
+}
+
 .container {
     width: 100%;
     display: flex;
